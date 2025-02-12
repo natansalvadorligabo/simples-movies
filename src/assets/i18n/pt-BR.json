@@ -1,0 +1,54 @@
+{
+  "sidenav": {
+    "home": "Início",
+    "movies": "Filmes",
+    "settings": "Configurações",
+    "logout": "Sair"
+  },
+  "breadcrumb": {
+    "home": "Início",
+    "movies": "Filmes",
+    "moviesListed": "filmes listados"
+  },
+  "moviesPage": {
+    "title": "Filmes",
+    "searchPlaceholder": "Busque um filme...",
+    "seeMore": "Ver mais"
+  },
+  "movieDetailsPage": {
+    "direction": "Direção",
+    "releaseDate": "Lançamento",
+    "budget": "Orçamento",
+    "revenue": "Receita",
+    "cast": "Elenco",
+    "synopsis": "Sinopse",
+    "seeMore": "Ver mais",
+    "reviews": {
+      "label": "Avaliações",
+      "watched": "Assistido",
+      "rated": "Avaliado",
+      "noResults": "Nenhuma avaliação",
+      "modal": {
+        "label": "Classifique este filme",
+        "experiencePlaceholder": "Descreva a sua experiência...",
+        "watchedAt": "Quando você assistiu?",
+        "publishButton": "Publicar"
+      }
+    }
+  },
+  "languages": {
+    "portuguese": "Português",
+    "english": "Inglês",
+    "french": "Francês"
+  },
+  "notFoundPage": {
+    "label": "Página não encontrada",
+    "backTo": "Voltar"
+  },
+  "errors": {
+    "noResults": "Nenhum filme encontrado com esse título",
+    "notFound": "Filme não encontrado",
+    "minLength10": "Mínimo de 10 caracteres",
+    "requiredField": "Campo obrigatório"
+  }
+}

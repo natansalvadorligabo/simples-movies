@@ -1,0 +1,281 @@
+@if (movie) { @defer {
+<div class="flex justify-between items-center mb-1">
+  <breadcrumb
+    [previousPages]="[
+      { path: '/', item: 'breadcrumb.home' | translate },
+      { path: '/movies', item: 'breadcrumb.movies' | translate }
+    ]"
+    [currentPage]="movie.title"
+  />
+  <language-selector />
+</div>
+<div class="space-y-4">
+  <movie-card-details [movie]="movie" [credits]="credits" [lang]="language" />
+
+  <div class="p-6 bg-white rounded-xl">
+    <div class="flex justify-between mb-4">
+      <div class="flex space-x-2 items-center">
+        <h4 class="font-semibold text-xl">
+          {{ "movieDetailsPage.reviews.label" | translate }}
+        </h4>
+
+        <span class="px-2 bg-gray-100 rounded-full">{{ reviews.length }}</span>
+      </div>
+
+      <div>
+        <button
+          class="btn btn-circle btn-success text-white"
+          (click)="showReviewModal()"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke-width="1.5"
+            stroke="currentColor"
+            class="size-6"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="M12 4.5v15m7.5-7.5h-15"
+            />
+          </svg>
+        </button>
+      </div>
+    </div>
+
+    <div class="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-4">
+      @if (reviews.length > 0) { 
+        @for (review of reviews; track $index) {
+        <review-card [review]="review" />
+      } } @else {
+        <p>{{ "movieDetailsPage.reviews.noResults" | translate }}.</p>
+      }
+    </div>
+  </div>
+</div>
+} @placeholder {
+<div class="skeleton rounded-xl space-y-4 h-6 w-72 mb-4"></div>
+
+<div
+  class="flex flex-col lg:flex-row space-y-2 lg:space-y-0 lg:space-x-4 h-full"
+>
+  <div class="w-full lg:w-7/12 p-6 skeleton rounded-xl space-y-4"></div>
+
+  <div class="w-full lg:w-5/12 h-full space-y-4">
+    <div class="p-6 skeleton rounded-xl space-y-4 h-72"></div>
+
+    <div class="p-6 skeleton rounded-xl space-y-4 h-72"></div>
+  </div>
+</div>
+} } @else {
+<div class="flex justify-between items-center mb-1">
+  <breadcrumb
+    [previousPages]="[
+      { path: '', item: 'breadcrumb.home' | translate },
+      { path: '/movies', item: 'breadcrumb.movies' | translate }
+    ]"
+    [currentPage]="'errors.notFound' | translate"
+  />
+  <language-selector />
+</div>
+
+<h1 class="text-4xl font-semibold mb-5">{{ "errors.notFound" | translate }}</h1>
+} 
+
+@if (isReviewModalOpen) {
+<modal>
+  <form
+    class="flex flex-col space-y-2"
+    [formGroup]="reviewForm"
+    (ngSubmit)="onSubmitReview()"
+  >
+    <div class="flex justify-between items-center mb-4">
+      <h3 class="font-semibold text-xl">
+        {{ "movieDetailsPage.reviews.modal.label" | translate }}
+      </h3>
+      <button type="reset" class="cursor-pointer px-1" (click)="closeModal()">
+        ✕
+      </button>
+    </div>
+
+    <div class="rating rating-lg flex justify-center">
+      <div class="rating rating-lg rating-half">
+        <input
+          type="radio"
+          name="rating"
+          class="rating-hidden"
+          (change)="setReviewContent(0)"
+          checked
+        />
+        <input
+          type="radio"
+          name="rating"
+          class="mask mask-star-2 mask-half-1 bg-blue-500"
+          (change)="setReviewContent(0.5)"
+        />
+        <input
+          type="radio"
+          name="rating"
+          class="mask mask-star-2 mask-half-2 bg-blue-500"
+          (change)="setReviewContent(1)"
+        />
+        <input
+          type="radio"
+          name="rating"
+          class="mask mask-star-2 mask-half-1 bg-blue-500"
+          (change)="setReviewContent(1.5)"
+        />
+        <input
+          type="radio"
+          name="rating"
+          class="mask mask-star-2 mask-half-2 bg-blue-500"
+          (change)="setReviewContent(2)"
+        />
+        <input
+          type="radio"
+          name="rating"
+          class="mask mask-star-2 mask-half-1 bg-blue-500"
+          (change)="setReviewContent(2.5)"
+        />
+        <input
+          type="radio"
+          name="rating"
+          class="mask mask-star-2 mask-half-2 bg-blue-500"
+          (change)="setReviewContent(3)"
+        />
+        <input
+          type="radio"
+          name="rating"
+          class="mask mask-star-2 mask-half-1 bg-blue-500"
+          (change)="setReviewContent(3.5)"
+        />
+        <input
+          type="radio"
+          name="rating"
+          class="mask mask-star-2 mask-half-2 bg-blue-500"
+          (change)="setReviewContent(4)"
+        />
+        <input
+          type="radio"
+          name="rating"
+          class="mask mask-star-2 mask-half-1 bg-blue-500"
+          (change)="setReviewContent(4.5)"
+        />
+        <input
+          type="radio"
+          name="rating"
+          class="mask mask-star-2 mask-half-2 bg-blue-500"
+          (change)="setReviewContent(5)"
+        />
+        <input
+          type="radio"
+          name="rating"
+          class="mask mask-star-2 mask-half-1 bg-blue-500"
+          (change)="setReviewContent(5.5)"
+        />
+        <input
+          type="radio"
+          name="rating"
+          class="mask mask-star-2 mask-half-2 bg-blue-500"
+          (change)="setReviewContent(6)"
+        />
+        <input
+          type="radio"
+          name="rating"
+          class="mask mask-star-2 mask-half-1 bg-blue-500"
+          (change)="setReviewContent(6.5)"
+        />
+        <input
+          type="radio"
+          name="rating"
+          class="mask mask-star-2 mask-half-2 bg-blue-500"
+          (change)="setReviewContent(7)"
+        />
+        <input
+          type="radio"
+          name="rating"
+          class="mask mask-star-2 mask-half-1 bg-blue-500"
+          (change)="setReviewContent(7.5)"
+        />
+        <input
+          type="radio"
+          name="rating"
+          class="mask mask-star-2 mask-half-2 bg-blue-500"
+          (change)="setReviewContent(8)"
+        />
+        <input
+          type="radio"
+          name="rating"
+          class="mask mask-star-2 mask-half-1 bg-blue-500"
+          (change)="setReviewContent(8.5)"
+        />
+        <input
+          type="radio"
+          name="rating"
+          class="mask mask-star-2 mask-half-2 bg-blue-500"
+          (change)="setReviewContent(9)"
+        />
+        <input
+          type="radio"
+          name="rating"
+          class="mask mask-star-2 mask-half-1 bg-blue-500"
+          (change)="setReviewContent(9.5)"
+        />
+        <input
+          type="radio"
+          name="rating"
+          class="mask mask-star-2 mask-half-2 bg-blue-500"
+          (change)="setReviewContent(10)"
+        />
+      </div>
+    </div>
+
+    <div>
+      <textarea
+        formControlName="reviewContent"
+        id="reviewContent"
+        name="reviewContent"
+        class="textarea textarea-bordered w-full"
+        [placeholder]="
+          'movieDetailsPage.reviews.modal.experiencePlaceholder' | translate
+        "
+      ></textarea>
+      <span
+        class="text-error"
+        *ngIf="
+          reviewForm.get('reviewContent')?.invalid &&
+          reviewForm.get('reviewContent')?.touched
+        "
+        >{{ "errors.minLength10" | translate }}.</span
+      >
+    </div>
+
+    <div>
+      <label for="watchedDate">{{
+        "movieDetailsPage.reviews.modal.watchedAt" | translate
+      }}</label>
+      <input
+        type="date"
+        class="input input-bordered w-full"
+        formControlName="watchedDate"
+        id="watchedDate"
+        name="watchedDate"
+      />
+      <span
+        class="text-error"
+        *ngIf="
+          reviewForm.get('watchedDate')?.invalid &&
+          reviewForm.get('watchedDate')?.touched
+        "
+        >{{ "errors.requiredField" | translate }}.</span
+      >
+    </div>
+
+    <button type="submit" class="btn" [disabled]="reviewForm.invalid">
+      {{ "movieDetailsPage.reviews.modal.publishButton" | translate }}
+    </button>
+  </form>
+</modal>
+}

@@ -1,0 +1,16 @@
+<div class="flex items-center space-x-2">
+  <img
+    [src]="photo"
+    [alt]="name"
+    [ngClass]="size"
+    class="rounded-full object-cover"
+  />
+  @if (!subtitle) {
+    <p class="font-semibold">{{ name }}</p>
+  } @else {
+    <div>
+      <h4 class="font-semibold text-md">{{ name }}</h4>
+      <p class="text-sm">{{ subtitle }}</p>
+    </div>
+  }
+</div>

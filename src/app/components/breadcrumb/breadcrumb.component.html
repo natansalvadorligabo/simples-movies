@@ -1,0 +1,8 @@
+<div class="breadcrumbs text-sm">
+  <ul>
+    @for (page of previousPages; track $index) {
+      <li><a [routerLink]="page.path" class="hover:underline">{{ page.item }}</a></li>
+    }
+    <li class="font-medium">{{ currentPage }}</li>
+  </ul>
+</div>

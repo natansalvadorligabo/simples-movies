@@ -1,0 +1,109 @@
+<div
+  class="flex flex-col lg:flex-row space-y-2 lg:space-y-0 lg:space-x-4 h-full"
+>
+  <div class="w-full lg:w-7/12 p-6 bg-white rounded-xl space-y-4">
+    <div class="flex flex-col-reverse sm:flex-row justify-between">
+      <h1 class="text-3xl font-semibold">{{ movie.title }}</h1>
+      <div class="flex space-x-2 items-center justify-end sm:justify-normal">
+        <img
+          src="/assets/icon_star.svg"
+          alt="Star"
+          class="size-8"
+        />
+        <span class="text-xl font-semibold">
+          {{ movie.vote_average.toFixed(2) }}
+        </span>
+      </div>
+    </div>
+
+    <div class="xl:flex space-x-4 space-y-2">
+      <div class="w-full xl:w-1/2 space-y-2">
+        <img
+          [src]="'https://image.tmdb.org/t/p/original/' + movie.poster_path"
+          [alt]="movie.title"
+          class="object-cover rounded-xl w-full"
+        />
+      </div>
+      <div class="space-y-4 xl:w-1/2">
+        <div>
+          <label>{{ 'movieDetailsPage.direction' | translate }}:</label>
+          <p class="font-semibold">{{ getDirector }}</p>
+        </div>
+
+        <div>
+          <label>{{ 'movieDetailsPage.releaseDate' | translate }}:</label>
+          <p class="font-semibold">
+            {{ movie.release_date | date : "longDate" : '' : lang.code }}
+          </p>
+        </div>
+
+        <div>
+          <label>{{ 'movieDetailsPage.budget' | translate }}:</label>
+          <p class="font-semibold">{{ movie.budget | currency }}</p>
+        </div>
+
+        <div>
+          <label>{{ 'movieDetailsPage.revenue' | translate }}:</label>
+          <p class="font-semibold">{{ movie.revenue | currency }}</p>
+        </div>
+
+        <p>{{ movie.tagline }}</p>
+
+        <div class="flex flex-wrap gap-4">
+          @for (genre of movie.genres; track $index ) {
+          <badge width="w-[110px]">{{ genre.name }}</badge>
+          }
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="w-full lg:w-5/12 h-full space-y-4">
+    <div class="p-6 bg-white rounded-xl space-y-4">
+      <h3 class="font-semibold text-xl">{{ 'movieDetailsPage.cast' | translate }}</h3>
+      <div class="grid grid-cols-1 xl:grid-cols-2 gap-6">
+        @for (person of credits.cast| slice: 0 : 6; track $index) {
+        <avatar
+          [photo]="'https://image.tmdb.org/t/p/original/' + person.profile_path"
+          [name]="person.original_name"
+          [subtitle]="person.character"
+          size="size-12"
+        />
+        }
+      </div>
+      <div class="flex justify-end">
+        <common-button (click)="showMoreCast()">{{ 'movieDetailsPage.seeMore' | translate }} +</common-button>
+      </div>
+    </div>
+
+    <div class="px-6 pb-6 bg-white rounded-xl lg:overflow-auto lg:h-full xl:h-60 ">
+      <div class="sticky top-0 bg-white z-10 py-4">
+        <h3 class="font-semibold text-xl">{{ 'movieDetailsPage.synopsis' | translate }}</h3>
+      </div>
+      <p>{{ movie.overview }}</p>
+    </div>    
+  </div>
+</div>
+
+@if (isModalOpen) {
+<modal>
+  <div class="flex justify-between items-center mb-4">
+    <h3 class="font-semibold text-xl">{{ 'movieDetailsPage.cast' | translate }}</h3>
+    <button class="cursor-pointer px-1" (click)="closeModal()">✕</button>
+  </div>
+  <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+    @for (person of credits.cast; track $index) {
+    <avatar
+      [photo]="
+      person.profile_path
+        ? 'https://image.tmdb.org/t/p/original/' + person.profile_path
+        : 'https://placehold.co/64x64?text=' + person.original_name
+      "
+      [name]="person.original_name"
+      [subtitle]="person.character"
+      size="size-12"
+    />
+    }
+  </div>
+</modal>
+}

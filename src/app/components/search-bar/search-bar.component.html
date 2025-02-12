@@ -1,0 +1,10 @@
+<div class="flex items-center">
+  <img src="/assets/icon_search.svg" alt="Search" class="absolute left-3" />
+  <input
+    [(ngModel)]="searchQuery"
+    (ngModelChange)="onInputChanges()"
+    [placeholder]="textPlaceholder"
+    type="text"
+    class="bg-white p-4 pl-10 rounded w-full focus-visible:outline-blue-500"
+  />
+</div>

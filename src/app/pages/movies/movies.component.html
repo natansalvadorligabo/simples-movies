@@ -1,0 +1,44 @@
+
+<div class="flex justify-between items-start">
+  <breadcrumb [previousPages]="[{ path: '/', item: 'breadcrumb.home' | translate }]" [currentPage]="'breadcrumb.movies' | translate" />
+  <language-selector />
+</div>
+
+<h1 class="text-4xl font-semibold mb-5">{{ 'moviesPage.title' | translate }}</h1>
+
+<search-bar (eventEmitter)="filterMoviesByTitle($event)" [placeholder]="'moviesPage.searchPlaceholder' | translate" />
+
+<div class="mt-3 mb-4">
+  <p>{{ filteredMovies.length.toString().padStart(2, '0')  }} {{ 'breadcrumb.moviesListed' | translate }}</p>
+</div>
+
+@if (filteredMovies.length > 0) {
+  <div class="bg-white p-8 rounded-xl grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 xl:grid-cols-5 gap-6">
+    @for (movie of filteredMovies; track $index) {
+      @defer {
+        <movie-card
+          [movie]="movie"
+          [lang]="language"
+        />
+      } @placeholder {
+        <div class="flex flex-col gap-4">
+          <div class="skeleton h-72 w-full"></div>
+          <div class="skeleton h-4"></div>
+          <div class="skeleton h-4 w-28"></div>
+          <div class="skeleton h-4"></div>
+        </div>
+      }
+    }
+  </div>
+  
+  <div class="flex justify-center my-9">
+    <common-button (click)="loadMoreMovies()" width="[162px]">
+      {{ 'moviesPage.seeMore' | translate }}
+      <img src="/assets/icon_arrow_forward.svg" alt="Icon Arrow" class="size-5 ml-5">
+    </common-button>
+  </div>
+} @else {
+  <div class="bg-white p-8 rounded-xl flex justify-center">
+    <h3>{{ 'errors.noResults' | translate }}</h3>
+  </div>
+}

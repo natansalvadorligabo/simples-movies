@@ -1,0 +1,38 @@
+<section class="hidden md:block sidenav fixed inset-y-0 left-0 w-64 text-slate-900 bg-white">
+  <div class="pt-12 mx-6">
+    <avatar photo="/assets/profile.png" name="Jack Thomeson" />
+
+    <div class="mt-14">
+      <ul>
+        <li class="flex">
+          <a
+            routerLink="/"
+            [routerLinkActiveOptions]="{ exact: true }"
+            routerLinkActive="bg-blue-700 hover:bg-blue-600 text-white"
+            class="p-3 rounded-sm hover:bg-blue-100 w-full"
+            >{{ 'sidenav.home' | translate }}</a
+          >
+        </li>
+        <li class="flex">
+          <a
+            routerLink="/movies"
+            [ngClass]="isActive() ? 'bg-blue-700 hover:bg-blue-600 text-white' : ''"
+            class="p-3 rounded-sm hover:bg-blue-100 w-full"
+            >{{ 'sidenav.movies' | translate }}</a
+          >
+        </li>
+      </ul>
+
+      <ul class="mt-11 text-gray-600">
+        <li class="flex">
+          <a href="" class="p-3 rounded-sm hover:bg-blue-100 w-full"
+            >{{ 'sidenav.settings' | translate }}</a
+          >
+        </li>
+        <li class="flex">
+          <a href="" class="p-3 rounded-sm hover:bg-blue-100 w-full">{{ 'sidenav.logout' | translate }}</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</section>

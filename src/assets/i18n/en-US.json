@@ -1,0 +1,54 @@
+{
+  "sidenav": {
+    "home": "Home",
+    "movies": "Movies",
+    "settings": "Settings",
+    "logout": "Logout"
+  },
+  "breadcrumb": {
+    "home": "Home",
+    "movies": "Movies",
+    "moviesListed": "listed movies"
+  },
+  "moviesPage": {
+    "title": "Movies",
+    "searchPlaceholder": "Search for a movie...",
+    "seeMore": "See more"
+  },
+  "movieDetailsPage": {
+    "direction": "Director",
+    "releaseDate": "Release Date",
+    "budget": "Budget",
+    "revenue": "Revenue",
+    "cast": "Cast",
+    "synopsis": "Synopsis",
+    "seeMore": "See more",
+    "reviews": {
+      "label": "Reviews",
+      "watched": "Watched",
+      "rated": "Rated",
+      "noResults": "No reviews",
+      "modal": {
+        "label": "Rate this movie",
+        "experiencePlaceholder": "Describe your experience...",
+        "watchedAt": "When did you watch it?",
+        "publishButton": "Post"
+      }
+    }
+  },
+  "languages": {
+    "portuguese": "Portuguese",
+    "english": "English",
+    "french": "French"
+  },
+  "notFoundPage": {
+    "label": "Page not found",
+    "backTo": "Back"
+  },
+  "errors": {
+    "noResults": "No movie found with that title",
+    "notFound": "Movie not found",
+    "minLength10": "Minimum of 10 characters",
+    "requiredField": "This field is required"
+  }
+}

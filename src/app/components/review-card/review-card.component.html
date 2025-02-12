@@ -1,0 +1,39 @@
+<div class="space-y-4 p-4 bg-gray-100 rounded-xl h-full">
+  <div class="flex justify-between items-center">
+    <avatar
+      [name]="review.author"
+      [photo]="'https://placehold.co/64x64?text=' + review.author"
+    />
+
+    <div class="flex items-center space-x-1">
+      <img src="/assets/icon_star2.svg" alt="Star" class="size-4" />
+      <span>{{ review.rating }}</span>
+    </div>
+  </div>
+
+  <div class="flex flex-col space-y-1">
+    <div class="break-words truncate hover:whitespace-normal">{{ review.reviewContent }}</div>
+
+    <div class="divider"></div>
+
+    <div class="flex flex-col space-y-1">
+      <div class="flex justify-between items-center">
+        <span class="text-sm text-gray-500"
+          >{{ "movieDetailsPage.reviews.watched" | translate }}:</span
+        >
+        <span class="text-sm text-gray-700">{{
+          review.watchedDate | date : "dd/MM/yyyy"
+        }}</span>
+      </div>
+
+      <div class="flex justify-between items-center">
+        <span class="text-sm text-gray-500"
+          >{{ "movieDetailsPage.reviews.rated" | translate }}:</span
+        >
+        <span class="text-sm text-gray-700">{{
+          review.reviewDate | date : "dd/MM/yyyy HH:mm:ss"
+        }}</span>
+      </div>
+    </div>
+  </div>
+</div>

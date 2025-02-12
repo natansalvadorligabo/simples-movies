@@ -1,0 +1,85 @@
+{
+  "reviews": [
+    {
+      "id": 1,
+      "movieId": 550,
+      "author": "João Silva",
+      "rating": 4,
+      "reviewContent": "Um filme incrível com reviravoltas inesperadas!",
+      "reviewDate": "2025-02-10T14:30:00Z",
+      "watchedDate": "2025-02-05T20:00:00Z"
+    },
+    {
+      "id": 2,
+      "movieId": 560,
+      "author": "Joãozinho Silva",
+      "rating": 9.5,
+      "reviewContent": "Filme perfeito, se não fosse o final.",
+      "reviewDate": "2025-02-10T14:30:00Z",
+      "watchedDate": "2025-02-05T20:00:00Z"
+    },
+    {
+      "id": "c7dc",
+      "rating": 10,
+      "reviewContent": "atencaooooooooo",
+      "watchedDate": "2025-02-10",
+      "author": "Natan",
+      "movieId": 278,
+      "reviewDate": "2025-02-11T13:51:00.571Z"
+    },
+    {
+      "id": "2682",
+      "rating": 0,
+      "reviewContent": "hagwkjhdbawkhgdb, muito ruim",
+      "watchedDate": "2025-02-03",
+      "author": "Natan",
+      "movieId": 278,
+      "reviewDate": "2025-02-11T13:54:03.563Z"
+    },
+    {
+      "id": "507e",
+      "rating": 2.5,
+      "reviewContent": "Filme ruim demais.",
+      "watchedDate": "2025-02-07",
+      "author": "Natan",
+      "movieId": 155,
+      "reviewDate": "2025-02-11T16:15:03.087Z"
+    },
+    {
+      "id": "195a",
+      "rating": 0,
+      "reviewContent": "aaaaaaaaaaa",
+      "watchedDate": "2025-02-17",
+      "author": "Natan",
+      "movieId": 155,
+      "reviewDate": "2025-02-11T16:15:47.199Z"
+    },
+    {
+      "id": "16ac",
+      "rating": 9.5,
+      "reviewContent": "testeeeeeee",
+      "watchedDate": "2025-02-05",
+      "author": "Natan",
+      "movieId": 155,
+      "reviewDate": "2025-02-11T16:23:35.355Z"
+    },
+    {
+      "id": "1673",
+      "rating": 6,
+      "reviewContent": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+      "watchedDate": "2025-02-03",
+      "author": "Natan",
+      "movieId": 278,
+      "reviewDate": "2025-02-11T17:55:46.832Z"
+    },
+    {
+      "id": "bb48",
+      "rating": 7.5,
+      "reviewContent": "qweawdsawd",
+      "watchedDate": "2025-02-05",
+      "author": "Natan",
+      "movieId": 278,
+      "reviewDate": "2025-02-11T17:59:18.860Z"
+    }
+  ]
+}

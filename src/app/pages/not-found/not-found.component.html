@@ -1,0 +1,14 @@
+<main class="min-h-full place-items-center px-6 py-24 sm:py-32 lg:px-8">
+  <div class="fixed top-2 right-2">
+    <language-selector />
+  </div>
+
+  <div class="text-center">
+    <p class="font-semibold text-blue-700">404</p>
+    <h1 class="mt-4 font-semibold text-balance text-gray-900 text-5xl">{{ 'notFoundPage.label' | translate }}</h1>
+    <div class="mt-10 flex justify-center">
+      <a routerLink="/movies" class="rounded-md bg-blue-700 px-4 py-3 font-semibold text-white shadow-xs">{{ 'notFoundPage.backTo' | translate }} &rarr;</a>
+    </div>
+  </div>
+</main>
+

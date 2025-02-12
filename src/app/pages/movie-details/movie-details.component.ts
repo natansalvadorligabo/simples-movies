@@ -87,7 +87,7 @@ export class MovieDetailsComponent implements OnInit {
       });
   }
 
-  setReviewContent(value: number) {
+  setReviewRating(value: number) {
     // this.reviewForm.get('rating')?.setValue(value);
     this.reviewForm.patchValue({
       rating: value

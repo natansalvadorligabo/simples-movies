@@ -33,6 +33,10 @@
         "experiencePlaceholder": "Describe your experience...",
         "watchedAt": "When did you watch it?",
         "publishButton": "Post"
+      },
+      "alerts": {
+        "success": "Your review has been published",
+        "failure": "Error publishing your review"
       }
     }
   },
@@ -49,6 +53,7 @@
     "noResults": "No movie found with that title",
     "notFound": "Movie not found",
     "minLength10": "Minimum of 10 characters",
-    "requiredField": "This field is required"
+    "requiredField": "This field is required",
+    "invalidDate": "The date must be later than the release date and earlier than today"
   }
 }

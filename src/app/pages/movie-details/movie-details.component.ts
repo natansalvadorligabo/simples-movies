@@ -48,6 +48,9 @@ export class MovieDetailsComponent implements OnInit {
   isReviewModalOpen: boolean = false;
   reviewForm: FormGroup;
 
+  publishStatus = '';
+  isInvalidDate = false;
+
   constructor(
     private route: ActivatedRoute,
     private movieService: MovieService,
@@ -75,23 +78,53 @@ export class MovieDetailsComponent implements OnInit {
   }
 
   onSubmitReview() {
-    this.reviewService
-      .createMovieReview({ ...this.reviewForm.value, author: "Natan", movieId: this.id })
-      .subscribe({
-        next: () => {
-          this.fetchReviews();
-          this.closeModal();
-          this.reviewForm.reset();
-        },
-        error: (err) => console.error(err),
-      });
+    if (this.dateValidator(new Date(this.reviewForm.value.watchedDate))) {
+      this.reviewService
+        .createMovieReview({
+          ...this.reviewForm.value,
+          author: 'Natan',
+          movieId: this.id,
+        })
+        .subscribe({
+          next: () => {
+            this.fetchReviews();
+            this.closeModal();
+            this.reviewForm.reset();
+            this.publishStatus = 'success';
+            setTimeout(() => {
+              this.publishStatus = '';
+            }, 3000);
+          },
+          error: (err) => {
+            this.publishStatus = 'failure';
+            console.error(err);
+            setTimeout(() => {
+              this.publishStatus = '';
+            }, 3000);
+          },
+        });
+    } else {
+      this.isInvalidDate = true;
+    }
+  }
+
+  dateValidator(date: Date): boolean {
+    const release = new Date(this.movie.release_date);
+    const today = new Date();
+
+    let valid = false;
+
+    if (date > release && date < today) {
+      valid = true;
+    }
+    return valid;
   }
 
   setReviewRating(value: number) {
     // this.reviewForm.get('rating')?.setValue(value);
     this.reviewForm.patchValue({
-      rating: value
-    })
+      rating: value,
+    });
   }
 
   fetchReviews(): void {

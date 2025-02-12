@@ -33,6 +33,10 @@
         "experiencePlaceholder": "Décrivez votre expérience...",
         "watchedAt": "Quand l'avez-vous regardé ?",
         "publishButton": "Publier"
+      },
+      "alerts": {
+        "success": "Votre avis a été publié",
+        "failure": "Erreur lors de la publication de votre avis"
       }
     }
   },
@@ -49,6 +53,7 @@
     "noResults": "Aucun film trouvé avec ce titre",
     "notFound": "Film non trouvé",
     "minLength10": "Minimum de 10 caractères",
-    "requiredField": "Ce champ est obligatoire"
+    "requiredField": "Ce champ est obligatoire",
+    "invalidDate": "La date doit être postérieure à la date de sortie et antérieure à aujourd'hui"
   }
 }

@@ -1,7 +1,7 @@
 {
   "reviews": [
     {
-      "id": 1,
+      "id": "1",
       "movieId": 550,
       "author": "João Silva",
       "rating": 4,
@@ -10,7 +10,7 @@
       "watchedDate": "2025-02-05T20:00:00Z"
     },
     {
-      "id": 2,
+      "id": "2",
       "movieId": 560,
       "author": "Joãozinho Silva",
       "rating": 9.5,
@@ -73,13 +73,40 @@
       "reviewDate": "2025-02-11T17:55:46.832Z"
     },
     {
-      "id": "bb48",
-      "rating": 7.5,
-      "reviewContent": "qweawdsawd",
+      "id": "a4a0",
+      "rating": 5.5,
+      "reviewContent": "Muito bom o filme!",
       "watchedDate": "2025-02-05",
       "author": "Natan",
-      "movieId": 278,
-      "reviewDate": "2025-02-11T17:59:18.860Z"
+      "movieId": 424,
+      "reviewDate": "2025-02-12T14:22:14.154Z"
+    },
+    {
+      "id": "ed63",
+      "rating": 5,
+      "reviewContent": "testeeeeee",
+      "watchedDate": "2025-02-04",
+      "author": "Natan",
+      "movieId": 238,
+      "reviewDate": "2025-02-12T14:56:54.487Z"
+    },
+    {
+      "id": "3d5f",
+      "rating": 9.5,
+      "reviewContent": "Muito bom e muito bom.",
+      "watchedDate": "1975-09-19",
+      "author": "Natan",
+      "movieId": 240,
+      "reviewDate": "2025-02-12T17:02:12.442Z"
+    },
+    {
+      "id": "e1e3",
+      "rating": 8.5,
+      "reviewContent": "aaaaaaaaaaaaaaaaaaaaa",
+      "watchedDate": "2025-02-03",
+      "author": "Natan",
+      "movieId": 240,
+      "reviewDate": "2025-02-12T17:04:07.953Z"
     }
   ]
 }

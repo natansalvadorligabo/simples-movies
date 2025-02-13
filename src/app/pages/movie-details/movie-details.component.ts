@@ -51,6 +51,9 @@ export class MovieDetailsComponent implements OnInit {
   publishStatus = '';
   isInvalidDate = false;
 
+  minDate = '';
+  maxDate = '';
+
   constructor(
     private route: ActivatedRoute,
     private movieService: MovieService,
@@ -75,6 +78,8 @@ export class MovieDetailsComponent implements OnInit {
     this.fetchMovieCreditsById();
     this.fetchReviews();
     this.getCurrentLanguage();
+
+    
   }
 
   onSubmitReview() {
@@ -144,6 +149,8 @@ export class MovieDetailsComponent implements OnInit {
       .subscribe({
         next: (res) => {
           this.movie = res;
+          this.minDate = new Date(this.movie.release_date).toISOString().split('T')[0];
+          this.maxDate = new Date().toISOString().split('T')[0];
         },
         error: (err) => {
           console.error(err);

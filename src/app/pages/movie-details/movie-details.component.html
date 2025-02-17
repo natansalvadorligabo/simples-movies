@@ -1,16 +1,16 @@
-@if (movie) { @defer {
+@if (movieDetails) { @defer {
 <div class="flex justify-between items-center mb-1">
   <breadcrumb
     [previousPages]="[
       { path: '/', item: 'breadcrumb.home' | translate },
       { path: '/movies', item: 'breadcrumb.movies' | translate }
     ]"
-    [currentPage]="movie.title"
+    [currentPage]="movieDetails.title"
   />
   <language-selector />
 </div>
 <div class="space-y-4">
-  <movie-card-details [movie]="movie" [credits]="credits" [lang]="language" />
+  <movie-card-details [movie]="movieDetails" [credits]="movieCredits" [lang]="selectedLanguage" />
 
   <div class="p-6 bg-white rounded-xl">
     <div class="flex justify-between mb-4">
@@ -19,7 +19,7 @@
           {{ "movieDetailsPage.reviews.label" | translate }}
         </h4>
 
-        <span class="px-2 bg-gray-100 rounded-full">{{ reviews.length }}</span>
+        <span class="px-2 bg-gray-100 rounded-full">{{ movieReviews.length }}</span>
       </div>
 
       <div>
@@ -46,8 +46,8 @@
     </div>
 
     <div class="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-4">
-      @if (reviews.length > 0) { 
-        @for (review of reviews; track $index) {
+      @if (movieReviews.length > 0) { 
+        @for (review of movieReviews; track $index) {
         <review-card [review]="review" />
       } } @else {
         <p>{{ "movieDetailsPage.reviews.noResults" | translate }}.</p>
@@ -84,11 +84,11 @@
 <h1 class="text-4xl font-semibold mb-5">{{ "errors.notFound" | translate }}</h1>
 } 
 
-@if (isReviewModalOpen) {
+@if (isReviewModalVisible) {
 <modal>
   <form
     class="flex flex-col space-y-2"
-    [formGroup]="reviewForm"
+    [formGroup]="movieReviewForm"
     (ngSubmit)="onSubmitReview()"
   >
     <div class="flex justify-between items-center mb-4">
@@ -245,8 +245,8 @@
       <span
         class="text-error"
         *ngIf="
-          reviewForm.get('reviewContent')?.invalid &&
-          reviewForm.get('reviewContent')?.touched
+          movieReviewForm.get('reviewContent')?.invalid &&
+          movieReviewForm.get('reviewContent')?.touched
         "
         >{{ "errors.minLength10" | translate }}.</span
       >
@@ -268,19 +268,19 @@
       <span
         class="text-error"
         *ngIf="
-          reviewForm.get('watchedDate')?.invalid &&
-          reviewForm.get('watchedDate')?.touched
+          movieReviewForm.get('watchedDate')?.invalid &&
+          movieReviewForm.get('watchedDate')?.touched
         ">{{ "errors.requiredField" | translate }}.
       </span>
       <span class="text-error" *ngIf="
-        isInvalidDate &&
-        reviewForm.get('watchedDate')?.touched
+        isInvalidReviewDate &&
+        movieReviewForm.get('watchedDate')?.touched
       ">
         {{ "errors.invalidDate" | translate }}.
       </span>
     </div>
 
-    <button type="submit" class="btn" [disabled]="reviewForm.invalid">
+    <button type="submit" class="btn" [disabled]="movieReviewForm.invalid">
       {{ "movieDetailsPage.reviews.modal.publishButton" | translate }}
     </button>
   </form>
@@ -288,7 +288,7 @@
 }
 
 <div class="fixed left-2 bottom-2">
-  @if (publishStatus === 'success') {
+  @if (reviewPublishStatus === 'success') {
     <div role="alert" class="alert alert-success">
       <svg
         xmlns="http://www.w3.org/2000/svg"
@@ -304,7 +304,7 @@
       <span>{{ "movieDetailsPage.reviews.alerts.success" | translate }}!</span>
     </div>
   } 
-  @if (publishStatus === 'failure') {
+  @if (reviewPublishStatus === 'failure') {
     <div role="alert" class="alert alert-error">
       <svg
         xmlns="http://www.w3.org/2000/svg"

@@ -33,23 +33,23 @@ import { ReviewService } from '../../services/review.service';
     ReactiveFormsModule,
     FormsModule,
     ReviewCardComponent,
-    CommonModule,
-  ],
+    CommonModule
+],
   templateUrl: './movie-details.component.html',
   styleUrl: './movie-details.component.scss',
 })
 export class MovieDetailsComponent implements OnInit {
-  id: number = 0;
-  movie!: Movie;
-  credits!: Credits;
-  reviews: Review[] = [];
-  language: Language = { name: 'Português', code: 'pt-BR' };
+  movieId: number = 0;
+  movieDetails!: Movie;
+  movieCredits!: Credits;
+  movieReviews: Review[] = [];
+  selectedLanguage: Language = { name: 'Português', code: 'pt-BR' };
 
-  isReviewModalOpen: boolean = false;
-  reviewForm: FormGroup;
+  isReviewModalVisible: boolean = false;
+  movieReviewForm: FormGroup;
 
-  publishStatus = '';
-  isInvalidDate = false;
+  reviewPublishStatus = '';
+  isInvalidReviewDate = false;
 
   minDate = '';
   maxDate = '';
@@ -60,7 +60,7 @@ export class MovieDetailsComponent implements OnInit {
     private translateService: TranslateService,
     private reviewService: ReviewService
   ) {
-    this.reviewForm = new FormGroup({
+    this.movieReviewForm = new FormGroup({
       rating: new FormControl(0, [Validators.required]),
       reviewContent: new FormControl('', [
         Validators.required,
@@ -71,50 +71,48 @@ export class MovieDetailsComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.id = Number(this.route.snapshot.paramMap.get('id'));
+    this.movieId = Number(this.route.snapshot.paramMap.get('id'));
 
-    this.language = this.translateService.getCurrentLanguageValue();
+    this.selectedLanguage = this.translateService.getCurrentLanguageValue();
     this.fetchMovieDetailsById();
     this.fetchMovieCreditsById();
     this.fetchReviews();
     this.getCurrentLanguage();
-
-    
   }
 
   onSubmitReview() {
-    if (this.dateValidator(new Date(this.reviewForm.value.watchedDate))) {
+    if (this.dateValidator(new Date(this.movieReviewForm.value.watchedDate))) {
       this.reviewService
         .createMovieReview({
-          ...this.reviewForm.value,
+          ...this.movieReviewForm.value,
           author: 'Natan',
-          movieId: this.id,
+          movieId: this.movieId,
         })
         .subscribe({
           next: () => {
             this.fetchReviews();
             this.closeModal();
-            this.reviewForm.reset();
-            this.publishStatus = 'success';
+            this.movieReviewForm.reset();
+            this.reviewPublishStatus = 'success';
             setTimeout(() => {
-              this.publishStatus = '';
+              this.reviewPublishStatus = '';
             }, 3000);
           },
           error: (err) => {
-            this.publishStatus = 'failure';
+            this.reviewPublishStatus = 'failure';
             console.error(err);
             setTimeout(() => {
-              this.publishStatus = '';
+              this.reviewPublishStatus = '';
             }, 3000);
           },
         });
     } else {
-      this.isInvalidDate = true;
+      this.isInvalidReviewDate = true;
     }
   }
 
   dateValidator(date: Date): boolean {
-    const release = new Date(this.movie.release_date);
+    const release = new Date(this.movieDetails.release_date);
     const today = new Date();
 
     let valid = false;
@@ -127,15 +125,15 @@ export class MovieDetailsComponent implements OnInit {
 
   setReviewRating(value: number) {
     // this.reviewForm.get('rating')?.setValue(value);
-    this.reviewForm.patchValue({
+    this.movieReviewForm.patchValue({
       rating: value,
     });
   }
 
   fetchReviews(): void {
-    this.reviewService.getReviewsByMovie(this.id).subscribe({
+    this.reviewService.getReviewsByMovie(this.movieId).subscribe({
       next: (data) => {
-        this.reviews = data;
+        this.movieReviews = data;
       },
       error: (err) => {
         console.error(err);
@@ -145,11 +143,11 @@ export class MovieDetailsComponent implements OnInit {
 
   fetchMovieDetailsById(): void {
     this.movieService
-      .getMovieDetailsById(this.id, this.language.code)
+      .getMovieDetailsById(this.movieId, this.selectedLanguage.code)
       .subscribe({
         next: (res) => {
-          this.movie = res;
-          this.minDate = new Date(this.movie.release_date).toISOString().split('T')[0];
+          this.movieDetails = res;
+          this.minDate = new Date(this.movieDetails.release_date).toISOString().split('T')[0];
           this.maxDate = new Date().toISOString().split('T')[0];
         },
         error: (err) => {
@@ -160,10 +158,10 @@ export class MovieDetailsComponent implements OnInit {
 
   fetchMovieCreditsById(): void {
     this.movieService
-      .getCreditsByMovieId(this.id, this.language.code)
+      .getCreditsByMovieId(this.movieId, this.selectedLanguage.code)
       .subscribe({
         next: (res) => {
-          this.credits = res;
+          this.movieCredits = res;
         },
         error: (err) => {
           console.error(err);
@@ -174,7 +172,7 @@ export class MovieDetailsComponent implements OnInit {
   private getCurrentLanguage() {
     this.translateService.getCurrentLanguage().subscribe({
       next: (res) => {
-        this.language = res;
+        this.selectedLanguage = res;
         this.fetchMovieDetailsById();
         this.fetchMovieCreditsById();
       },
@@ -185,10 +183,10 @@ export class MovieDetailsComponent implements OnInit {
   }
 
   showReviewModal() {
-    this.isReviewModalOpen = true;
+    this.isReviewModalVisible = true;
   }
 
   closeModal() {
-    this.isReviewModalOpen = false;
+    this.isReviewModalVisible = false;
   }
 }

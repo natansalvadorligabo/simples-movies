@@ -17,7 +17,7 @@ export class LanguageSelectorComponent {
 
   ngOnInit() {
     this.currentLanguage = this.translateService.getCurrentLanguageValue();
-    this.setLanguageIcon(this.currentLanguage);
+    this.getLanguageIcon(this.currentLanguage);
     this.languages = this.translateService.getAllLanguages();
   }
 
@@ -26,7 +26,7 @@ export class LanguageSelectorComponent {
     this.translateService.updateLanguage(lang);
   }
 
-  setLanguageIcon(lang: Language): string {
+  getLanguageIcon(lang: Language): string {
     switch (lang.code) {
       case 'pt-BR':
         return 'br';

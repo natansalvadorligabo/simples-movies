@@ -1,4 +1,4 @@
 export const environment = {
   apiKey:
-    'yourToken',
+    'eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIzZmU2NGUxMjYxOTdiZTgzZThkNDExOTQzNWJiODgyMiIsIm5iZiI6MTczODc2MTUxNS4yLCJzdWIiOiI2N2EzNjUyYjRmY2Y2NTk1Y2M4YTc3OTMiLCJzY29wZXMiOlsiYXBpX3JlYWQiXSwidmVyc2lvbiI6MX0.0Pixf4MJoRiD5sx8gRrpwoabEn08vNglG4DJhCQLlFY',
 };

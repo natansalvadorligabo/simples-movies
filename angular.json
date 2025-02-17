@@ -11,7 +11,7 @@
         }
       },
       "i18n": {
-        "sourceLocale": "pt-br",
+        "sourceLocale": "pt",
         "locales": {
           "en-US": "src/assets/i18n/en-US.json",
           "fr": "src/assets/i18n/fr.json"

@@ -9,6 +9,6 @@ import { LanguageSelectorComponent } from "../../components/language-selector/la
   templateUrl: './not-found.component.html',
   styleUrl: './not-found.component.scss'
 })
-export class NotFoundComponent {
-
+export class NotFoundComponent { 
+  
 }

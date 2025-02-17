@@ -10,6 +10,15 @@
     "movies": "Filmes",
     "moviesListed": "filmes listados"
   },
+  "homePage": {
+    "banner": {
+      "title": "Crie sua lista de filmes",
+      "description": "Salve seus filmes favoritos e fique por dentro de todos os detalhes",
+      "seeMoreMoviesButton": "Ver filmes"
+    },
+    "titleFavoriteMovies": "Seus filmes favoritos",
+    "listEmpty": "Você ainda não adicionou nenhum filme aos favoritos"
+  },
   "moviesPage": {
     "title": "Filmes",
     "searchPlaceholder": "Busque um filme...",

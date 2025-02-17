@@ -9,5 +9,7 @@ import { Component, Input } from '@angular/core';
 })
 export class CommonButtonComponent {
 
-  @Input() width: string = '';
+  @Input() textColor: string = 'text-white';
+  @Input() backgroundColor: string = 'bg-blue-700';
+  @Input() hoverBackgroundColor: string = 'hover:bg-blue-600';
 }

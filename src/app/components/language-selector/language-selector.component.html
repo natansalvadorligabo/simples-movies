@@ -1,6 +1,6 @@
-<div class="flex justify-between items-center hover:bg-gray-200 py-2 px-3 rounded-xl">
+<div class="dropdown dropdown-end dropdown-hover flex justify-between items-center hover:bg-gray-200 py-2 px-3 rounded-xl">
   <div class="flex space-x-1">
-    <span [class]="'fi fi-' + setLanguageIcon(currentLanguage)"></span>
+    <span [class]="'fi fi-' + getLanguageIcon(currentLanguage)"></span>
     <p>{{ currentLanguage.name| translate }}</p>
   </div>
 
@@ -23,12 +23,12 @@
     </div>
     <ul
       tabindex="0"
-      class="dropdown-content menu bg-base-100 rounded-box z-[1] w-52 p-2 shadow"
+      class="dropdown-content menu bg-base-100 rounded-box z-30 w-52 p-2 shadow-md"
     >
       @for (lang of languages; track $index) {
         <li [id]="lang.name" (click)="setLanguage(lang)">
             <div class="flex space-x-1">
-              <span [class]="'fi fi-' + setLanguageIcon(lang)"></span>
+              <span [class]="'fi fi-' + getLanguageIcon(lang)"></span>
               <p>{{ lang.name| translate }}</p>
             </div>
         </li>

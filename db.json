@@ -126,5 +126,19 @@
       "movieId": 238,
       "reviewDate": "2025-02-13T11:14:11.098Z"
     }
+  ],
+  "favorites": [
+    {
+      "id": "53f6",
+      "movieId": 278
+    },
+    {
+      "id": "7bcf",
+      "movieId": 496243
+    },
+    {
+      "id": "8b9b",
+      "movieId": 637
+    }
   ]
 }

@@ -1,9 +1,6 @@
 <button
-  class="bg-blue-700 hover:bg-blue-600 text-white 
-  flex justify-center items-center 
-  p-2 px-3 rounded-md 
-  cursor-pointer"
-  [ngClass]="width"
+  [class]="backgroundColor + ' ' + hoverBackgroundColor + ' ' + textColor + ' ' +
+  'btn font-medium'"
 >
   <ng-content></ng-content>
 </button>

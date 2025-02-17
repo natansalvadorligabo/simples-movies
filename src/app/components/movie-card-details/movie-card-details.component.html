@@ -39,12 +39,12 @@
 
         <div>
           <label>{{ 'movieDetailsPage.budget' | translate }}:</label>
-          <p class="font-semibold">{{ movie.budget | currency }}</p>
+          <p class="font-semibold">{{ movie.budget ? (movie.budget | currency) : '-' }}</p>
         </div>
 
         <div>
           <label>{{ 'movieDetailsPage.revenue' | translate }}:</label>
-          <p class="font-semibold">{{ movie.revenue | currency }}</p>
+          <p class="font-semibold">{{ movie.revenue ? (movie.revenue | currency) : '-' }}</p>
         </div>
 
         <p>{{ movie.tagline }}</p>

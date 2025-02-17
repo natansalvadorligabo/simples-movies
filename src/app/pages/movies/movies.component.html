@@ -9,16 +9,18 @@
 <search-bar (eventEmitter)="filterMoviesByTitle($event)" [placeholder]="'moviesPage.searchPlaceholder' | translate" />
 
 <div class="mt-3 mb-4">
-  <p>{{ filteredMovies.length.toString().padStart(2, '0')  }} {{ 'breadcrumb.moviesListed' | translate }}</p>
+  <p>{{ displayedMovies.length.toString().padStart(2, '0')  }} {{ 'breadcrumb.moviesListed' | translate }}</p>
 </div>
 
-@if (filteredMovies.length > 0) {
-  <div class="bg-white p-8 rounded-xl grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 xl:grid-cols-5 gap-6">
-    @for (movie of filteredMovies; track $index) {
+@if (displayedMovies.length > 0) {
+  <div class="bg-white p-8 rounded-xl grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 xl:grid-cols-5 gap-6">
+    @for (movie of displayedMovies; track $index) {
       @defer {
         <movie-card
           [movie]="movie"
-          [lang]="language"
+          [lang]="selectedLanguage"
+          [isFavorite]="isMovieFavorite(movie.id)"
+          (notifyMovie)="toggleFavorite($event)"
         />
       } @placeholder {
         <div class="flex flex-col gap-4">

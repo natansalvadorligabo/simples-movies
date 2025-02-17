@@ -13,7 +13,7 @@ export class ReviewService {
 
   getReviewsByMovie(movieId: number): Observable<Array<Review>> {
     return this.http.get<Array<Review>>(
-      `${this.apiUrl}/reviews/?movieId=${movieId}`
+      `${this.apiUrl}/reviews?movieId=${movieId}`
     );
   }
 
@@ -22,6 +22,9 @@ export class ReviewService {
   ): Observable<Review> {
     const reviewDate = new Date().toISOString();
 
-    return this.http.post<Review>(`${this.apiUrl}/reviews`, { ...review, reviewDate });
+    return this.http.post<Review>(`${this.apiUrl}/reviews`, {
+      ...review,
+      reviewDate,
+    });
   }
 }

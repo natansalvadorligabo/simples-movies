@@ -73,4 +73,4 @@
 
 ## 🔑 LICENÇA
 
-Distribuído sob a licença [MIT](https://github.com/natansalvadorligabo/web2-ifsales?tab=MIT-1-ov-file).
+Distribuído sob a licença [MIT](https://github.com/natansalvadorligabo/simples-movies/tree/main?tab=MIT-1-ov-file).
